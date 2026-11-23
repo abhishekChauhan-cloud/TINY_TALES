@@ -1,0 +1,21 @@
+{
+  "name": "tiny-tales",
+  "version": "1.0.0",
+  "description": "Tiny Tales — A little prompt. A lovely little story.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test_endpoints.js"
+  },
+  "keywords": [
+    "story-generator",
+    "tiny-tales",
+    "short-stories",
+    "creative-writing",
+    "gemini",
+    "ai"
+  ],
+  "author": "Tiny Tales Team",
+  "license": "MIT"
+}

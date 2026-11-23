@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiny Tales — A little prompt. A lovely little story.</title>
+  <meta name="description" content="Create heartwarming, original one-minute stories with Tiny Tales. Pick a genre, choose a mood, and let your imagination unfold.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Decorative Background Stars & Clouds -->
+  <div class="decor-stars" aria-hidden="true">
+    <span class="star s1">✦</span>
+    <span class="star s2">★</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">✧</span>
+    <span class="star s5">★</span>
+  </div>
+
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <div class="brand">
+          <div class="logo-icon" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              <path d="M12 6v6"></path>
+              <path d="M9 9h6"></path>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="app-title">Tiny Tales</h1>
+            <p class="app-tagline">“A little prompt. A lovely little story.”</p>
+          </div>
+        </div>
+        <div class="header-badges">
+          <div id="modeBadge" class="mode-badge" title="Status of the story generator">
+            <span class="mode-dot"></span>
+            <span id="modeText">Checking connection...</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+      <!-- Left Column: Story Creation Studio -->
+      <section class="creation-panel" aria-labelledby="creator-heading">
+        <div class="panel-card">
+          <h2 id="creator-heading" class="sr-only">Story Creator</h2>
+
+          <!-- Step 1: Prompt Input -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="promptInput" class="form-label">
+                <span class="step-num">1</span> What is your story about?
+              </label>
+              <span class="char-hint" id="charCount">0/300</span>
+            </div>
+            <div class="input-container">
+              <textarea 
+                id="promptInput" 
+                class="story-prompt-textarea" 
+                rows="3" 
+                maxlength="300"
+                placeholder="A shy dragon who collects lost buttons..." 
+                aria-describedby="promptError"
+              ></textarea>
+              <div id="promptError" class="input-error-msg" role="alert" style="display: none;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span>Please enter an idea, character, or place to begin your tale!</span>
+              </div>
+            </div>
+
+            <!-- Quick Sparks / Inspiration Pills -->
+            <div class="prompt-suggestions">
+              <span class="suggestion-label">✨ Quick sparks:</span>
+              <div class="suggestion-chips">
+                <button type="button" class="chip-btn" data-prompt="A shy dragon who collects lost buttons in an old library">Shy button dragon</button>
+                <button type="button" class="chip-btn" data-prompt="A tiny owl barista brewing hot starlight tea atop a cedar tree">Owl tea barista</button>
+                <button type="button" class="chip-btn" data-prompt="A pocket watch that only ticks when someone tells the truth">Honest pocket watch</button>
+                <button type="button" class="chip-btn" data-prompt="A secret garden on the rooftop of a busy subway train">Subway rooftop garden</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Genre Selector -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="step-num">2</span> Pick a Genre
+            </label>
+            <div class="genre-grid" role="radiogroup" aria-label="Story genre">
+              <button type="button" class="option-card active" data-genre="Fantasy" role="radio" aria-checked="true">
+                <span class="option-icon">🪄</span>
+                <span class="option-name">Fantasy</span>
+              </button>
+              <button type="button" class="option-card" data-genre="Mystery" role="radio" aria-checked="false">
+                <span class="option-icon">🔍</span>
+                <span class="option-name">Mystery</span>
+              </button>
+              <button type="button" class="option-card" data-genre="Adventure" role="radio" aria-checked="false">
+                <span class="option-icon">🧭</span>
+                <span class="option-name">Adventure</span>
+              </button>
+              <button type="button" class="option-card" data-genre="Comedy" role="radio" aria-checked="false">
+                <span class="option-icon">🎭</span>
+                <span class="option-name">Comedy</span>
+              </button>
+              <button type="button" class="option-card" data-genre="Sci-Fi" role="radio" aria-checked="false">
+                <span class="option-icon">🚀</span>
+                <span class="option-name">Sci-Fi</span>
+              </button>
+              <button type="button" class="option-card" data-genre="Bedtime" role="radio" aria-checked="false">
+                <span class="option-icon">🌙</span>
+                <span class="option-name">Bedtime</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Mood Selector -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="step-num">3</span> Set the Mood
+            </label>
+            <div class="mood-pill-group" role="radiogroup" aria-label="Story mood">
+              <button type="button" class="mood-pill active" data-mood="Cozy" role="radio" aria-checked="true">
+                <span class="mood-emoji">☕</span>
+                <span>Cozy</span>
+              </button>
+              <button type="button" class="mood-pill" data-mood="Funny" role="radio" aria-checked="false">
+                <span class="mood-emoji">🎈</span>
+                <span>Funny</span>
+              </button>
+              <button type="button" class="mood-pill" data-mood="Exciting" role="radio" aria-checked="false">
+                <span class="mood-emoji">⚡</span>
+                <span>Exciting</span>
+              </button>
+              <button type="button" class="mood-pill" data-mood="Spooky" role="radio" aria-checked="false">
+                <span class="mood-emoji">🕯️</span>
+                <span>Spooky</span>
+              </button>
+              <button type="button" class="mood-pill" data-mood="Hopeful" role="radio" aria-checked="false">
+                <span class="mood-emoji">🌻</span>
+                <span>Hopeful</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="submit-container">
+            <button type="button" id="generateBtn" class="primary-btn">
+              <span class="btn-sparkle">✨</span>
+              <span class="btn-text">Create my story</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Story Display Card -->
+      <section class="display-panel" aria-live="polite">
+        <!-- State A: Empty State (Default before first generation) -->
+        <div id="emptyState" class="story-card state-card empty-state">
+          <div class="empty-illustration">
+            <div class="storybook-visual">
+              <div class="book-cover">
+                <span class="star-decor">✦</span>
+                <div class="book-pages"></div>
+              </div>
+            </div>
+          </div>
+          <h3 class="state-title">Your tale awaits</h3>
+          <p class="state-desc">
+            Whisper an idea into the box on the left, pick your favorite atmosphere, and we’ll spin a one-minute story just for you.
+          </p>
+          <div class="empty-tips">
+            <div class="tip-item">⏱️ Read in ~1 minute</div>
+            <div class="tip-item">✨ 120–180 words</div>
+            <div class="tip-item">🌿 Warm & original</div>
+          </div>
+        </div>
+
+        <!-- State B: Loading State -->
+        <div id="loadingState" class="story-card state-card loading-state" style="display: none;">
+          <div class="magic-loader">
+            <div class="quill-pen">🪶</div>
+            <div class="loader-sparkles">
+              <span>✦</span><span>★</span><span>✧</span>
+            </div>
+          </div>
+          <h3 id="loadingPhrase" class="state-title">Weaving your tale...</h3>
+          <p class="state-desc">Gathering words, mixing stardust, and turning the page.</p>
+          <div class="loading-progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- State C: Error State -->
+        <div id="errorState" class="story-card state-card error-state" style="display: none;">
+          <div class="error-icon" aria-hidden="true">🍂</div>
+          <h3 class="state-title">A page got caught in the wind</h3>
+          <p id="errorMessage" class="state-desc">Something unexpected happened while crafting your story.</p>
+          <button type="button" id="retryBtn" class="secondary-btn">
+            <span>Try again</span>
+          </button>
+        </div>
+
+        <!-- State D: Active Story Reading Card -->
+        <div id="storyCard" class="story-card reading-card" style="display: none;">
+          <!-- Ribbon bookmark ornament -->
+          <div class="bookmark-ribbon" aria-hidden="true"></div>
+
+          <!-- Story Header Meta -->
+          <div class="story-meta-bar">
+            <div class="tags-cluster">
+              <span id="genreBadge" class="meta-tag tag-genre">🪄 Fantasy</span>
+              <span id="moodBadge" class="meta-tag tag-mood">☕ Cozy</span>
+            </div>
+            <div class="reading-meta">
+              <span class="read-time" title="Estimated reading time">⏱️ ~1 min read</span>
+              <span id="wordCountBadge" class="word-count">142 words</span>
+            </div>
+          </div>
+
+          <!-- Story Content -->
+          <article class="story-article">
+            <h2 id="storyTitle" class="story-title">The Button Dragon’s Treasure</h2>
+            <div class="story-divider" aria-hidden="true">
+              <span>✦</span>
+              <span class="line"></span>
+              <span>✦</span>
+            </div>
+            <div id="storyBody" class="story-body">
+              <!-- Paragraphs inserted dynamically -->
+            </div>
+          </article>
+
+          <!-- Story Card Actions -->
+          <div class="story-actions">
+            <div class="actions-left">
+              <button type="button" id="copyBtn" class="action-btn" title="Copy story to clipboard">
+                <svg class="action-icon icon-copy" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span id="copyBtnText">Copy story</span>
+              </button>
+              <button type="button" id="readAloudBtn" class="action-btn btn-narrate" title="Listen to story">
+                <svg class="action-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+                <span id="readAloudText">Listen</span>
+              </button>
+            </div>
+            <div class="actions-right">
+              <button type="button" id="remixBtn" class="primary-btn secondary-style" title="Create another version with this prompt">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <polyline points="1 20 1 14 7 14"></polyline>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                <span>Try another version</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Toast Notification for Copy -->
+          <div id="copyToast" class="toast-notice" role="status" aria-live="polite">
+            ✨ Story copied to clipboard!
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <div class="footer-content">
+        <p><strong>Tiny Tales</strong> — Short stories for quiet moments.</p>
+        <p class="footer-sub">Original, safe for all ages, crafted to brighten your day.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
